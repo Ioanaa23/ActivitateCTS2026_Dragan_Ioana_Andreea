@@ -1,5 +1,7 @@
 package ro.ase.cts.classes;
 
+import java.util.Arrays;
+
 public abstract class Aplicant{
 	protected String nume;
 	protected String prenume;
@@ -7,7 +9,7 @@ public abstract class Aplicant{
 	protected int punctaj;
 	protected int nr_proiecte;
 	protected String[] denumireProiect;
-	
+	protected static int PUNCTAJ_MINIM=80;
 	
 	public String getNume() {
 		return nume;
@@ -27,26 +29,26 @@ public abstract class Aplicant{
 	public void setVarsta(int varsta) {
 		this.varsta = varsta;
 	}
-	public void statut(){
-		if(punctaj>80)
-			System.out.println("Aplicantul "+nume+" "+prenume+" a fost acceptat.");
-		else
-			System.out.println("Aplicantul "+nume+" "+prenume+" nu a fost acceptat.");
-		}
+
+	public void afiseazaStatut(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Aplicantul ");
+		builder.append(this.nume).append(" ").append(this.prenume);
+		builder.append((this.punctaj > Aplicant.PUNCTAJ_MINIM) ? " " : " nu");
+		System.out.println(builder);
+	}
 	public int getPunctaj() {
 		return punctaj;
 	}
 	public void setPunctaj(int punctaj) {
 		this.punctaj = punctaj;
 	}
-	
-	
 
-	
 	public Aplicant() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public Aplicant(String nume, String prenume, int varsta, int punctaj, int nr_proiecte, String[] denumireProiect) {
 		super();
 		this.nume = nume;
@@ -59,8 +61,22 @@ public abstract class Aplicant{
 	public int getNr_proiecte() {
 		return nr_proiecte;
 	}
+
 	public void setNr_proiecte(int nr_proiecte) {
 		this.nr_proiecte = nr_proiecte;
 	}
 
+	public abstract void afiseazaFinantare();
+
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("nume='").append(nume).append('\'');
+		sb.append(", prenume='").append(prenume).append('\'');
+		sb.append(", varsta=").append(varsta);
+		sb.append(", punctaj=").append(punctaj);
+		sb.append(", nr_proiecte=").append(nr_proiecte);
+		sb.append(", denumireProiect=").append(Arrays.toString(denumireProiect));
+		return sb.toString();
+	}
 }
