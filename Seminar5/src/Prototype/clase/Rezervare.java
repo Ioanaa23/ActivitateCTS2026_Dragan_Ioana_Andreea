@@ -32,7 +32,7 @@ public class Rezervare implements RezervareAbstracta{
 
     }
 
-    private Rezervare() {
+    public Rezervare() {
     }
 
     public void setOraRezervare(int oraRezervare) {
