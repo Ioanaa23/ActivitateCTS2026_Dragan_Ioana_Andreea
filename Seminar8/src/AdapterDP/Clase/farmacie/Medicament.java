@@ -1,0 +1,13 @@
+package AdapterDP.Clase.farmacie;
+
+public class Medicament {
+    private String nume;
+
+    public Medicament(String nume) {
+        this.nume = nume;
+    }
+
+    public void cumparaMedicament(){
+        System.out.println("Medicamentul " + nume + " a fost achizitionat");
+    }
+}
